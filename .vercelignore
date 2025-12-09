@@ -5,10 +5,8 @@ node_modules/
 composer.phar
 yarn.lock
 package-lock.json
-composer.lock
 
 # Local Configuration
-package.json
 .DS_Store
 
 # Environment

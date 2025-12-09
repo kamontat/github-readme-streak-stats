@@ -98,13 +98,13 @@ final class StatsTest extends TestCase
      */
     public function testValidUsernameWithWhitelist(): void
     {
-        $_SERVER["WHITELIST"] = "DenverCoder1";
+        $_ENV["WHITELIST"] = "DenverCoder1";
         try {
             $contributionGraphs = getContributionGraphs("DenverCoder1");
             $this->assertIsArray($contributionGraphs);
             $this->assertNotEmpty($contributionGraphs);
         } finally {
-            unset($_SERVER["WHITELIST"]);
+            unset($_ENV["WHITELIST"]);
         }
     }
 
@@ -113,13 +113,13 @@ final class StatsTest extends TestCase
      */
     public function testNotWhitelistedUsername(): void
     {
-        $_SERVER["WHITELIST"] = "DenverCoder1";
+        $_ENV["WHITELIST"] = "DenverCoder1";
         try {
             $this->expectException(InvalidArgumentException::class);
             $this->expectExceptionMessage("User not in whitelist.");
             getContributionGraphs("help");
         } finally {
-            unset($_SERVER["WHITELIST"]);
+            unset($_ENV["WHITELIST"]);
         }
     }
 
